@@ -4,7 +4,6 @@ Matrix::Matrix(int width, int height) :
 	_width(width),
 	_height(height)
 {
-	Serial.begin(115200);
 	origo = new element;
 	element *node = origo;
 	int size = _width*_height;
