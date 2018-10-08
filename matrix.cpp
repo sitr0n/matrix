@@ -5,7 +5,7 @@ Matrix::Matrix(int width, int height) :
 	_height(height)
 {
 	origo = new element;
-	element *node = origo;
+	auto *node = origo;
 	int size = _width*_height;
 	for (int i = 0; i < size; i++) {
 		node->next = new element;
