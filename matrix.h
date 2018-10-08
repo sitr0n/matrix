@@ -1,9 +1,10 @@
 #pragma once
-#include "Arduino.h"
+#include <cassert>
 
 class Matrix {
 	public:
 		Matrix(int width, int height);
+		~Matrix();
 		void set(int value, int x, int y);
 		int get(int x, int y);
 		void fillWithValue(int value);
@@ -12,9 +13,9 @@ class Matrix {
 		int _width;
 		int _height;
 
-		typedef uint16_t data;
+		typedef int data;
 		struct element {
 			data value = 0;
-			element *next = NULL;
+			element *next = nullptr;
 		}*origo;
 };

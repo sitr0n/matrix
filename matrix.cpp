@@ -13,14 +13,29 @@ Matrix::Matrix(int width, int height) :
 	}
 }
 
+Matrix::~Matrix()
+{
+	int size = _width*_height;
+	int i = 0;
+	auto *nodeToRemove = origo;
+	while(true){	
+		auto *trailNode = nodeToRemove->next;
+		delete nodeToRemove;
+		if (i >= size - 1)
+			break;
+		i++;
+		nodeToRemove = trailNode;
+	}
+}
+
 void Matrix::fillWithValue(int value)
 {
-	element *node = origo;
-	(node)->value = (data) value;
+	auto *node = origo;
+	node->value = (data) value;
 	int size = _width*_height;
 	for (int i = 0; i < size - 1; i++) {
 		node = node->next;
-		(node)->value = (data) value;
+		node->value = (data) value;
 	}
 }
 
@@ -29,12 +44,12 @@ void Matrix::set(int value, int x, int y)
 	assert(x < _width);
 	assert(y < _height);
 
-	element *node = origo;
+	auto *node = origo;
 	int index = y*_width + x;
 	for (int i = 0; i < index; i++) {
 		node = node->next;
 	}
-	node->value = value;
+	node->value = (data) value;
 }
 
 int Matrix::get(int x, int y)
@@ -42,7 +57,7 @@ int Matrix::get(int x, int y)
 	assert(x < _width);
 	assert(y < _height);
 
-	element *node = origo;
+	auto *node = origo;
 	int index = y*_width + x;
 	for (int i = 0; i < index; i++) {
 		node = node->next;
